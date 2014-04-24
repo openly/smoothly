@@ -1,0 +1,15 @@
+{
+  "validate":{
+    "ref": "login_validate",
+    "transitions": {
+      "success": "api_auth",
+      "fail": "end"
+    }
+  },
+  "api_auth":{
+    "ref": "api_auth",
+    "sucess": "get_customer_details",
+    "fail": "end"
+  }
+
+}

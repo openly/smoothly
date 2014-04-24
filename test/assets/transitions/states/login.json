@@ -1,0 +1,11 @@
+{
+  "api_auth":{
+    "action": "api_call",
+    "action_config":{
+      "backend": "KELWAY",
+      "method":"POST",
+      "endpoint": "{{AUTH_USER}}",
+      "data":["user","pass","customer_code"]
+    }
+  }
+}
