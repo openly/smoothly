@@ -1,0 +1,4 @@
+smoothly
+========
+
+API Smoothing layer
