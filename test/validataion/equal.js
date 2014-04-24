@@ -4,7 +4,7 @@ var EqualValidator = require('../../src/lib/validation/equal');
 var vm = new ValidationManager;
 
 var ev = new EqualValidator;
-// req.setErrorMessage('Filed A is needed/required');
+// req.setErrorMessage('Field A is needed/required');
 
 vm.addValidator('a,b',ev);
 
