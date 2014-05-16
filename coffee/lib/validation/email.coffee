@@ -5,6 +5,6 @@ class EmailValidator extends FieldValidator
     @errorMessage = "Field \"{{field}}\" should be a valid email"
 
   doValidate:(data)->
-    data.match(/\w+@\w+\.\w+/) != null
+    !data? or data.match(/\w+@\w+\.\w+/) != null
 
 module.exports = EmailValidator

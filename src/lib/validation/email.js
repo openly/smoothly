@@ -13,7 +13,7 @@ EmailValidator = (function(_super) {
   }
 
   EmailValidator.prototype.doValidate = function(data) {
-    return data.match(/\w+@\w+\.\w+/) !== null;
+    return (data == null) || data.match(/\w+@\w+\.\w+/) !== null;
   };
 
   return EmailValidator;
