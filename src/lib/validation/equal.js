@@ -9,7 +9,7 @@ EqualValidator = (function(_super) {
   __extends(EqualValidator, _super);
 
   function EqualValidator() {
-    return EqualValidator.__super__.constructor.apply(this, arguments);
+    this.errorMessage = "Fields {{{field}}} must be equal";
   }
 
   EqualValidator.prototype.validate = function(data) {
@@ -17,7 +17,6 @@ EqualValidator = (function(_super) {
   };
 
   EqualValidator.prototype.getError = function(field) {
-    this.errorMessage = "Fields {{{field}}} must be equal";
     return EqualValidator.__super__.getError.call(this, "\"" + field.split(/\,/).slice(0, 2).join('" and "') + "\"");
   };
 

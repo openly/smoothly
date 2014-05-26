@@ -4,7 +4,7 @@ var RequiredValidator = require('../../src/lib/validation/required');
 var vm = new ValidationManager;
 
 var req = new RequiredValidator;
-// req.setErrorMessage('Filed A is needed/required');
+req.setErrorMessage('Filed A is needed/required');
 
 vm.addValidator('a',req);
 
