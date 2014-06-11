@@ -1,6 +1,7 @@
 mongoose = require 'mongoose'
+Database = require '../../db'
 
-class MongoDB
+class MongoDB extends Database
 
 	constructor:(DBUrl, DBName) ->
 		@DBUrl 	= DBUrl

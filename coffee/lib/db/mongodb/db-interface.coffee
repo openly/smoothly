@@ -1,6 +1,6 @@
 # This class just passes the arguments to the model. But it is important to have this class to have a 
 # Single interface for all the databases say MySQL etc.
-class DBInterface
+class MongoDBInterface extends DBInterface
 
 	constructor : (schema) ->
 		@model = schema.getModel()
