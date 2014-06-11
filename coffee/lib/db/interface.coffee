@@ -1,18 +1,22 @@
+
 class DBInterface
-  constructor: () ->
   
+  constructor: (schema) ->
+    throw Error "Implementations shoud have the contructor to set up the DBInterface"
 
   create : (data, cb) ->
-    @model(data).save cb
+    throw Error "Implementations shoud have create to set up the DBInterface"
 
-  readOne : (criteria, cb) ->
-    @model.findOne criteria, cb
+  read : (criteria, cb) ->
+    throw Error "Implementations shoud have read to set up the DBInterface"
 
   readAll : (criteria, cb) ->
-    @model.find criteria, cb
+    throw Error "Implementations shoud have readAll to set up the DBInterface"
 
   update : (criteria, data, options, cb) ->
-    @model.findOneAndUpdate criteria, data, options, cb
-
+    throw Error "Implementations shoud have update to set up the DBInterface"
+  
   delete : (criteria, cb) ->
-    @model.find(criteria).remove cb
+    throw Error "Implementations shoud have delete to set up the DBInterface"
+
+module.exports = DBInterface

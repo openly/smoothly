@@ -3,15 +3,11 @@ Database = require '../../db'
 
 class MongoDB extends Database
 
-	constructor:(DBUrl, DBName) ->
-		@DBUrl 	= DBUrl
-		@DBName = DBName
+	constructor:(@dbHost, @dbName) ->
+		@conn = mongoose.createConnection(@dbHost + @dbName);
+		@conn.Schema = mongoose.Schema
 
-	createConnection: ()->
-		conn = mongoose.createConnection('mongodb://localhost/test');
-		conn.Schema = mongoose.Schema
-		conn
-		
+	registerSchema: ()->
+		@conn
 
 module.exports = MongoDB
-

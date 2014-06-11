@@ -1,6 +1,8 @@
 # This class just passes the arguments to the model. But it is important to have this class to have a 
 # Single interface for all the databases say MySQL etc.
-class MongoDBInterface extends DBInterface
+DBInterface = require '../../../../src/lib/db/interface.js'
+
+class MongodbInterface extends DBInterface
 
 	constructor : (schema) ->
 		@model = schema.getModel()
@@ -20,4 +22,4 @@ class MongoDBInterface extends DBInterface
 	delete : (criteria, cb) ->
 		@model.find(criteria).remove cb
 
-module.exports = DBInterface 
+module.exports = MongodbInterface

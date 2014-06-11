@@ -1,6 +1,7 @@
 Memcached = require 'memcached'
+Cache = require './cache.js'
 
-class Memcache
+class Memcache extends Cache
 
 	constructor: (memcacheServerUrl, options) ->
 		@memcached = new Memcached(memcacheServerUrl, options);
@@ -8,9 +9,7 @@ class Memcache
 	get : (key,callback) ->
 		@memcached.get key, callback
 
-	set: (key, callback) =>
-		cb = (val, ttl, innerCallback) =>
-			@memcached.set key, val, ttl, innerCallback
-		callback cb
+	set: (key, val, ttl, callback) =>
+		@memcached.set key, val, ttl, callback
 
 module.exports = Memcache

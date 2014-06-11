@@ -4,3 +4,5 @@ class Database
   
   registerSchema: ()->
     throw Error "Implementations shoud have the registerSchema"
+
+module.exports = Database

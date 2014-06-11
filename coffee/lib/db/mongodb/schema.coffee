@@ -1,10 +1,10 @@
 class Schema
 
 	constructor: (dbBackend, @schemaName, @schema) ->
-		@conn = dbBackend.createConnection();
+		@conn = dbBackend.registerSchema();
 		@model = @conn.model(@schemaName, @schema)
 
 	getModel : ()->
 		@model
 
-module.exports = Schema 
+module.exports = Schema

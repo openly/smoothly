@@ -1,11 +1,12 @@
 mongodb = require '../db/mongodb'
 DBSchema = require '../db/mongodb/schema.js'
-DBInterface = require '../db/mongodb/db-interface.js'
+DBInterface = require '../db/mongodb/mongodb-interface.js'
+Cache = require './cache.js'
 
-class DBCache
+class DBCache extends Cache
 
-	constructor: (DBUrl, DBName) ->
-		db = new mongodb(DBUrl, DBName)
+	constructor: (dbHost, dbName) ->
+		db = new mongodb(dbHost, dbName)
 		@deleteTimers = {}
 		dbCacheSchema = new DBSchema db, "db_cache", 
 		'key'  :
@@ -20,11 +21,6 @@ class DBCache
 		@cacheInterface.delete { "key" : key }, (err, obj)->
 			callback(err, obj)
 
-	# set : (key, val, ttl, callback) ->
-	# 	@removeEntryIfExists(key).then ->
-	# 		@createEntry(key, val).then ->
-	# 			@createCacheDeleteTimer(key, ttl)
-
 	set : (key, val, ttl, callback) ->
 		@removeEntryIfExists key, (err, obj)=>
 			@createEntry key, val, (err, obj)=>
@@ -33,7 +29,6 @@ class DBCache
 
 	createEntry: (key, val, callback)->
 		@cacheInterface.create { "key" : key, "val" : val }, callback
-
 
 	createCacheDeleteTimer: (key, ttl)->
 		@deleteTimers[key] = setTimeout ()=>

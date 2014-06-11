@@ -6,23 +6,20 @@ var memcacheOptions = {
 	timeout : 3000,
 	retries : 1
 }
-var ttl = 2;	
 
-var memcache = new Memcache(memcacheURL, memcacheOptions, ttl);
+var memcache = new Memcache(memcacheURL, memcacheOptions);
 
 var calls = [
 	
 	function(callback){
-		memcache.set("some_key2", function(cb){
-		  cb("some_val23", 2, function(err, obj){
+		memcache.set("some_key", "some_val", 2, function(err, obj){
 		  	console.log("saving to cache", obj)
-		  	callback();
-		  });
+		  	callback()
 		})
 	},
 
 	function(callback){
-		memcache.get( 'some_key2', function(err, obj){
+		memcache.get( 'some_key', function(err, obj){
 			console.log("value from cahce ", obj)
 		callback();
 		})
@@ -30,7 +27,7 @@ var calls = [
 
 	function(callback){
 		setTimeout(function(){
-			memcache.get( 'some_key2', function(err, obj){
+			memcache.get( 'some_key', function(err, obj){
 				console.log("value from cahce after timeout", obj)
 				callback();
 			})

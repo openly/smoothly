@@ -7,7 +7,7 @@ var dbcache = new DBCache('mongodb://localhost:27017/', 'test');
 var calls = [
 	
 	function(callback){
-		dbcache.set("myKey", "myval2", 4, function(err, obj){
+		dbcache.set("myKey", "myval", 4, function(err, obj){
 			callback();
 		})
 	},
@@ -20,7 +20,7 @@ var calls = [
 	},
 
 	function(callback){
-		dbcache.set("myKey", "myval3", 4, function(err, obj){
+		dbcache.set("myKey", "myval_modefied", 4, function(err, obj){
 			callback();
 		})
 	},

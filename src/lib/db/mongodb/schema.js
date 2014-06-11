@@ -5,7 +5,7 @@ Schema = (function() {
   function Schema(dbBackend, schemaName, schema) {
     this.schemaName = schemaName;
     this.schema = schema;
-    this.conn = dbBackend.createConnection();
+    this.conn = dbBackend.registerSchema();
     this.model = this.conn.model(this.schemaName, this.schema);
   }
 
